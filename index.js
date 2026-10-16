@@ -1,32 +1,36 @@
-function queue() {
-    return new Promise((resolve, reject) => {
+// Versi Manual
+setTimeout(() => {
+    console.log('Program akan berhenti dalam 5 detik');
+    setTimeout(() => {
+        console.log('Program akan berhenti dalam 4 detik');
         setTimeout(() => {
-            console.log("John");
-            resolve();
-        }, 1500);
-    })
-    .then(() => {
-        return new Promise((resolve, reject) => {
+            console.log('Program akan berhenti dalam 3 detik');
             setTimeout(() => {
-                console.log("Ed");
-                resolve();
-            }, 2000);
-        });
-    })
-    .then(() => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                console.log("Jane");
-                resolve("Antrean selesai");
-            }, 500);
-        });
-    });
-}
+                console.log('Program akan berhenti dalam 2 detik');
+                setTimeout(() => {
+                    console.log('Program akan berhenti dalam 1 detik');
+                    setTimeout(() => {
+                        console.log('Program berhenti');
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    }, 1000);
+}, 1000);
 
-queue()
-    .then((result) => {
-        console.log(result);
-    })
-    .catch((error) => {
-        console.log("Terjadi kesalahan:", error);
-    });
+// Versi Callback
+function programBerhentiDalam(detik, callback) {
+    setTimeout(() => {
+        console.log('Program berhenti dalam ' + detik + ' detik');
+        if (detik > 1) {
+            programBerhentiDalam(detik - 1, callback);
+        } else {
+            setTimeout(() => {
+                callback();
+            }, 1000);
+        }
+    }, 1000);
+}
+programBerhentiDalam(5, () => {
+    console.log('Program berhenti');
+});
