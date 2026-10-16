@@ -19,16 +19,18 @@ setTimeout(() => {
 }, 1000);
 
 // Versi Callback
-function programBerhentiDalam(detik) {
+function programBerhentiDalam(detik, callback) {
     setTimeout(() => {
         console.log('Program berhenti dalam ' + detik + ' detik');
         if (detik > 1) {
-            programBerhentiDalam(detik - 1);
+            programBerhentiDalam(detik - 1, callback);
         } else {
             setTimeout(() => {
-                console.log('Program berhenti');
+                callback();
             }, 1000);
         }
     }, 1000);
 }
-programBerhentiDalam(5);
+programBerhentiDalam(5, () => {
+    console.log('Program berhenti');
+});
