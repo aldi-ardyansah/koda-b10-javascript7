@@ -1,4 +1,4 @@
-// Versi Manual
+// setTimeout() tanpa callback
 setTimeout(() => {
     console.log('Program akan berhenti dalam 5 detik');
     setTimeout(() => {
@@ -18,7 +18,7 @@ setTimeout(() => {
     }, 1000);
 }, 1000);
 
-// Versi Callback
+// setTimeout() menggunakan callback
 function programBerhentiDalam(detik, callback) {
     setTimeout(() => {
         console.log('Program berhenti dalam ' + detik + ' detik');
