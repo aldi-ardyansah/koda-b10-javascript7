@@ -1,6 +1,6 @@
 # JavaScript 7
 
-## Membuat program dengan setTimeout() untuk menghitung mundur tiap detik
+## Membuat Program dengan setTimeout() untuk Menghitung Mundur Tiap Detik
 
 ### setTimeout() tanpa callback
 ```javascript
